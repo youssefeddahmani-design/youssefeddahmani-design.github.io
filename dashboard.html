@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+
+    <!-- SEO -->
+    <title>Dashboard | Destigo</title>
+    <meta
+      name="description"
+      content="Dashboard de Destigo: muestra tus países visitados y planifica nuevos viajes."
+    />
+
+    <!-- Bootstrap -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- ===================== MENÚ ===================== -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container">
+        <a class="navbar-brand" href="#">Destigo</a>
+
+        <button
+          class="navbar-toggler"
+          data-bs-toggle="collapse"
+          data-bs-target="#menu"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div id="menu" class="collapse navbar-collapse">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Inicio</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#" id="logoutBtn">Cerrar sesión</a>
+            </li>
+            <li class="nav-item ms-3">
+              <!-- Botones de idioma -->
+              <button
+                class="btn btn-outline-light btn-sm me-1"
+                onclick="setLanguage('es')"
+              >
+                ES
+              </button>
+              <button
+                class="btn btn-outline-light btn-sm"
+                onclick="setLanguage('en')"
+              >
+                EN
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- ===================== CONTENIDO ===================== -->
+    <div class="container mt-5">
+      <h2 id="welcomeTitle">Bienvenido, <span id="userDisplay"></span>!</h2>
+      <p id="welcomeSubtitle">
+        Aquí puedes ver los países que has visitado y planificar nuevos viajes.
+      </p>
+
+      <!-- Países visitados -->
+      <h4 class="mt-4" id="visitedTitle">Tus países visitados:</h4>
+      <ul id="visitedCountries" class="list-group mb-4">
+        <!-- Se llenará con JS -->
+      </ul>
+
+      <!-- Marcar nuevos países -->
+      <h4 id="markNewTitle">Marca nuevos países como visitados:</h4>
+      <div class="d-flex flex-wrap" id="countryButtons">
+        <!-- Botones de países -->
+      </div>
+    </div>
+
+    <!-- ===================== PIE DE PÁGINA ===================== -->
+    <footer class="bg-dark text-white text-center p-3 mt-5">
+      <p>© 2026 Destigo | Guía de viajes</p>
+    </footer>
+
+    <!-- ===================== JS BOOTSTRAP ===================== -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- ===================== JS DASHBOARD COMPLETO ===================== -->
+    <script>
+      // ===================== LOGIN CHECK =====================
+      const userDisplay = document.getElementById("userDisplay");
+      const visitedList = document.getElementById("visitedCountries");
+      const countryButtonsContainer = document.getElementById("countryButtons");
+      const logoutBtn = document.getElementById("logoutBtn");
+
+      // Lista de países disponibles
+      const countries = [
+        "España",
+        "Italia",
+        "Francia",
+        "Alemania",
+        "Japón",
+        "México",
+        "Brasil",
+        "Portugal",
+        "Reino Unido",
+      ];
+
+      // Multi-idioma
+      let lang = localStorage.getItem("destigoLang") || "es";
+
+      function setLanguage(language) {
+        localStorage.setItem("destigoLang", language);
+        location.reload(); // recarga para cambiar textos
+      }
+
+      // Textos según idioma
+      const texts = {
+        es: {
+          welcomeTitle: "Bienvenido,",
+          welcomeSubtitle:
+            "Aquí puedes ver los países que has visitado y planificar nuevos viajes.",
+          visitedTitle: "Tus países visitados:",
+          markNewTitle: "Marca nuevos países como visitados:",
+        },
+        en: {
+          welcomeTitle: "Welcome,",
+          welcomeSubtitle:
+            "Here you can see the countries you've visited and plan new trips.",
+          visitedTitle: "Your visited countries:",
+          markNewTitle: "Mark new countries as visited:",
+        },
+      };
+
+      // ===================== COMPROBAR LOGIN =====================
+      const user = localStorage.getItem("destigoUser");
+      if (!user) {
+        // No logueado → volver a login
+        window.location.href = "login.html";
+      } else {
+        userDisplay.textContent = user;
+      }
+
+      // Cambiar textos al idioma seleccionado
+      document.getElementById("welcomeTitle").textContent =
+        texts[lang].welcomeTitle + " " + user;
+      document.getElementById("welcomeSubtitle").textContent =
+        texts[lang].welcomeSubtitle;
+      document.getElementById("visitedTitle").textContent =
+        texts[lang].visitedTitle;
+      document.getElementById("markNewTitle").textContent =
+        texts[lang].markNewTitle;
+
+      // ===================== CARGAR PAÍSES VISITADOS =====================
+      let visited = JSON.parse(localStorage.getItem("visitedCountries")) || [];
+
+      function renderVisited() {
+        visitedList.innerHTML = "";
+        if (visited.length === 0) {
+          visitedList.innerHTML =
+            "<li class='list-group-item'>No has marcado ningún país todavía.</li>";
+        } else {
+          visited.forEach((country) => {
+            const li = document.createElement("li");
+            li.textContent = country;
+            li.className = "list-group-item";
+            visitedList.appendChild(li);
+          });
+        }
+      }
+
+      renderVisited();
+
+      // ===================== BOTONES DE PAÍSES =====================
+      countryButtonsContainer.innerHTML = "";
+      countries.forEach((country) => {
+        const btn = document.createElement("button");
+        btn.textContent = country;
+        btn.className = "btn btn-outline-primary m-1";
+        if (visited.includes(country)) btn.disabled = true;
+
+        btn.addEventListener("click", () => {
+          if (!visited.includes(country)) {
+            visited.push(country);
+            localStorage.setItem("visitedCountries", JSON.stringify(visited));
+            renderVisited();
+            btn.disabled = true;
+            alert(`¡${country} marcado como visitado!`);
+          }
+        });
+
+        countryButtonsContainer.appendChild(btn);
+      });
+
+      // ===================== CERRAR SESIÓN =====================
+      logoutBtn.addEventListener("click", () => {
+        localStorage.removeItem("destigoUser");
+        localStorage.removeItem("visitedCountries");
+        window.location.href = "login.html";
+      });
+    </script>
+  </body>
+</html>

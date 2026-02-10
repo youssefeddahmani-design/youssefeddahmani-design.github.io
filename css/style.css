@@ -1,0 +1,252 @@
+/* =========================
+   DESTIGO GLOBAL STYLE MEJORADO
+========================= */
+
+body {
+  background: #f4f7fb;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+  line-height: 1.6;
+  scroll-behavior: smooth;
+  transition: background 0.3s ease;
+}
+
+/* =========================
+ NAVBAR
+========================= */
+.navbar {
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  background: #ffffffcc; /* Ligeramente translúcido */
+  backdrop-filter: blur(10px); /* Efecto vidrio */
+  transition: 0.3s ease;
+}
+
+.navbar a {
+  color: #333;
+  transition: color 0.3s ease;
+}
+
+.navbar a:hover {
+  color: #0d6efd;
+}
+
+.navbar-brand {
+  font-weight: 600;
+  letter-spacing: 1px;
+  font-size: 1.5rem;
+}
+
+/* =========================
+ HERO
+========================= */
+.hero {
+  background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+              url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1600');
+  background-size: cover;
+  background-position: center;
+  color: white;
+  padding: 120px 20px;
+  border-radius: 20px;
+  text-align: center;
+  margin-bottom: 60px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero h1 {
+  font-size: 3.5rem;
+  font-weight: 700;
+  text-shadow: 2px 2px 10px rgba(0,0,0,0.4);
+}
+
+.hero p {
+  font-size: 1.3rem;
+  opacity: 0.9;
+  max-width: 600px;
+  margin: 10px auto 0;
+}
+
+/* Animación de aparición suave */
+.hero h1, .hero p {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 1s forwards;
+}
+
+@keyframes fadeInUp {
+  to {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
+/* =========================
+ CARDS
+========================= */
+.card {
+  border: none;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+  transition: 0.4s ease;
+  background: #fff;
+}
+
+.card:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+}
+
+.card img {
+  height: 180px;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.card:hover img {
+  transform: scale(1.1);
+}
+
+/* =========================
+ SECTION CARDS
+========================= */
+.section-card {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 35px;
+  margin-bottom: 30px;
+  box-shadow: 0 12px 35px rgba(0,0,0,0.05);
+  transition: 0.3s ease;
+}
+
+.section-card:hover {
+  transform: translateY(-5px);
+}
+
+/* =========================
+ SECTION TITLE
+========================= */
+.section-title {
+  font-weight: 700;
+  border-left: 5px solid #0d6efd;
+  padding-left: 12px;
+  margin-bottom: 25px;
+  font-size: 1.5rem;
+  color: #0d6efd;
+}
+
+/* =========================
+ INFO GRID
+========================= */
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+/* =========================
+ INFO BOX MEJORADO PARA ESPAÑA
+========================= */
+.info-box {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 30px 20px;
+  font-size: 16px;
+  color: #333;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
+}
+
+.info-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.1);
+}
+
+.info-box strong {
+  display: block;
+  font-size: 18px;
+  color: #0d6efd;
+  margin-bottom: 10px;
+}
+
+.info-box p {
+  font-size: 16px;
+  margin: 0;
+}
+
+/* =========================
+ BOTONES
+========================= */
+.btn {
+  border-radius: 30px;
+  padding: 10px 20px;
+  font-weight: 500;
+  transition: 0.3s ease;
+  background: linear-gradient(90deg, #0d6efd, #6610f2);
+  color: #fff;
+  border: none;
+  box-shadow: 0 4px 15px rgba(13,110,253,0.3);
+}
+
+.btn:hover {
+  background: linear-gradient(90deg, #6610f2, #0d6efd);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(13,110,253,0.35);
+}
+
+/* =========================
+ LIST GROUP
+========================= */
+.list-group-item {
+  border-radius: 12px !important;
+  margin-bottom: 8px;
+  transition: 0.3s ease;
+}
+
+.list-group-item:hover {
+  background: #0d6efd;
+  color: #fff;
+}
+
+/* =========================
+ FOOTER
+========================= */
+footer {
+  margin-top: 80px;
+  padding: 40px 20px;
+  background: #0d6efd;
+  color: #fff;
+  text-align: center;
+  border-radius: 20px 20px 0 0;
+}
+
+/* =========================
+ LOGIN CARD
+========================= */
+.login-card {
+  background: #ffffff;
+  padding: 50px;
+  border-radius: 25px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+  transition: 0.3s ease, transform 0.3s ease;
+}
+
+.login-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+}
+
+.login-card input {
+  padding: 12px 15px;
+  border-radius: 12px;
+  border: 1px solid #ccc;
+  margin-bottom: 15px;
+  width: 100%;
+  transition: 0.3s ease, border-color 0.3s ease;
+}
+
+.login-card input:focus {
+  outline: none;
+  border-color: #0d6efd;
+  box-shadow: 0 0 8px rgba(13,110,253,0.2);
+}
