@@ -3,18 +3,28 @@
   <head>
     <meta charset="UTF-8" />
 
-    <!-- SEO -->
+    <!-- ===================== SEO COMPLETO ===================== -->
     <title>Destigo | Guía de Viajes por Países</title>
     <meta
       name="description"
       content="Descubre países, planifica tu viaje, compara vuelos, hoteles y guarda tus viajes con Destigo."
     />
+    <meta
+      name="keywords"
+      content="Viajes, Turismo, Países, Destigo, España, Italia, Francia, Hoteles, Vuelos"
+    />
+    <meta name="robots" content="index, follow" />
+    <meta name="author" content="Destigo" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- Bootstrap (SIN CSS PROPIO) -->
+    <!-- ===================== BOOTSTRAP ===================== -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
       rel="stylesheet"
     />
+
+    <!-- ===================== CSS PERSONALIZADO ===================== -->
+    <link rel="stylesheet" href="css/styles.css" />
   </head>
 
   <body>
@@ -22,7 +32,6 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container">
         <a class="navbar-brand" href="#">Destigo</a>
-
         <button
           class="navbar-toggler"
           data-bs-toggle="collapse"
@@ -30,7 +39,6 @@
         >
           <span class="navbar-toggler-icon"></span>
         </button>
-
         <div id="menu" class="collapse navbar-collapse">
           <ul class="navbar-nav ms-auto">
             <li class="nav-item">
@@ -43,7 +51,6 @@
               <a class="nav-link" href="#" id="loginLink">Login</a>
             </li>
             <li class="nav-item ms-3">
-              <!-- Botones de idioma -->
               <button
                 class="btn btn-outline-light btn-sm me-1"
                 onclick="setLanguage('es')"
@@ -69,16 +76,14 @@
         Guía de viajes por países. Compara vuelos, hoteles y organiza tu viaje
         fácilmente.
       </p>
-
-      <a href="#paises" class="btn btn-primary btn-lg" id="viewCountriesBtn">
-        Ver países
-      </a>
+      <a href="#paises" class="btn btn-primary btn-lg" id="viewCountriesBtn"
+        >Ver países</a
+      >
     </div>
 
     <!-- ===================== SECCIÓN DE PAÍSES ===================== -->
     <div id="paises" class="container mt-5">
       <h2 class="text-center mb-4" id="countriesTitle">Países populares</h2>
-
       <div class="row">
         <!-- España -->
         <div class="col-md-4 mb-4">
@@ -87,7 +92,7 @@
             <div class="card-body text-center">
               <h5 class="card-title">España</h5>
               <p class="card-text">Playas, cultura y gastronomía.</p>
-              <a href="paises/españa.html" class="btn btn-primary mb-2"
+              <a href="paises/espana.html" class="btn btn-primary mb-2"
                 >Ver guía</a
               >
               <button
@@ -139,8 +144,6 @@
             </div>
           </div>
         </div>
-
-        <!-- Puedes añadir más países siguiendo el mismo patrón -->
       </div>
     </div>
 
@@ -160,56 +163,45 @@
     <!-- ===================== JS BOOTSTRAP ===================== -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
-    <!-- ===================== JS COMPLETO ===================== -->
+    <!-- ===================== JS PERSONAL ===================== -->
     <script>
-      // ===================== LOGIN / DASHBOARD =====================
+      // Login
       const loginLink = document.getElementById("loginLink");
       loginLink.addEventListener("click", () => {
         const user = localStorage.getItem("destigoUser");
-        if (user) {
-          window.location.href = "dashboard.html"; // ya logueado
-        } else {
-          window.location.href = "login.html"; // no logueado
-        }
+        window.location.href = user ? "dashboard.html" : "login.html";
       });
 
-      // ===================== MARCAR PAÍSES VISITADOS =====================
+      // Marcar países visitados
       const markButtons = document.querySelectorAll(".mark-visited");
-
       markButtons.forEach((btn) => {
         const country = btn.getAttribute("data-country");
-
-        // Deshabilitar si ya visitado
         let visited =
           JSON.parse(localStorage.getItem("visitedCountries")) || [];
         if (visited.includes(country)) {
           btn.disabled = true;
           btn.textContent = "Visitado";
         }
-
         btn.addEventListener("click", () => {
           const user = localStorage.getItem("destigoUser");
           if (!user) {
-            alert("Debes iniciar sesión para marcar países visitados.");
+            alert("Debes iniciar sesión.");
             window.location.href = "login.html";
             return;
           }
-
-          let visited =
-            JSON.parse(localStorage.getItem("visitedCountries")) || [];
+          visited = JSON.parse(localStorage.getItem("visitedCountries")) || [];
           if (!visited.includes(country)) {
             visited.push(country);
             localStorage.setItem("visitedCountries", JSON.stringify(visited));
             btn.disabled = true;
             btn.textContent = "Visitado";
-            alert(`¡${country} marcado como visitado!`);
+            alert(`${country} marcado como visitado!`);
           }
         });
       });
 
-      // ===================== NOTICIAS DIARIAS =====================
+      // Noticias diarias
       const newsList = document.getElementById("newsList");
-
       const newsToday = [
         "Nueva ruta directa Madrid – Tokio disponible hoy.",
         "Descuentos en hoteles de Roma este fin de semana.",
@@ -217,25 +209,19 @@
         "Italia lanza campaña de turismo sostenible.",
         "España anuncia nuevas experiencias culturales en ciudades principales.",
       ];
+      newsToday.forEach((news) => {
+        const li = document.createElement("li");
+        li.textContent = news;
+        li.className = "list-group-item";
+        newsList.appendChild(li);
+      });
 
-      if (newsList) {
-        newsToday.forEach((news) => {
-          const li = document.createElement("li");
-          li.textContent = news;
-          li.className = "list-group-item";
-          newsList.appendChild(li);
-        });
-      }
-
-      // ===================== MULTI-IDIOMA BÁSICO =====================
+      // Multi-idioma básico
       let lang = localStorage.getItem("destigoLang") || "es";
-
       function setLanguage(language) {
         localStorage.setItem("destigoLang", language);
-        location.reload(); // recarga para cambiar textos
+        location.reload();
       }
-
-      // ===================== CAMBIO DE TEXTOS SEGÚN IDIOMA =====================
       const texts = {
         es: {
           mainTitle: "Descubre el mundo con Destigo 🌍",
@@ -254,7 +240,6 @@
           newsTitle: "Today's News 📰",
         },
       };
-
       document.getElementById("mainTitle").textContent = texts[lang].mainTitle;
       document.getElementById("mainSubtitle").textContent =
         texts[lang].mainSubtitle;
