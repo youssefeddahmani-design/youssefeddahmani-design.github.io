@@ -29,7 +29,9 @@
 
     <!-- ===================== CSS PERSONALIZADO ===================== -->
     <link rel="stylesheet" href="css/styles.css" />
-    <!-- Google Analytics -->
+
+    <!-- ===================== GOOGLE ANALYTICS ===================== -->
+    <!-- Google tag (gtag.js) -->
     <script
       async
       src="https://www.googletagmanager.com/gtag/js?id=G-MRLQQDJWNP"
@@ -40,7 +42,6 @@
         dataLayer.push(arguments);
       }
       gtag("js", new Date());
-
       gtag("config", "G-MRLQQDJWNP");
     </script>
   </head>
@@ -168,9 +169,7 @@
     <!-- ===================== NOTICIAS ===================== -->
     <div id="news" class="container mt-5">
       <h2 class="text-center mb-4" id="newsTitle">Noticias de hoy 📰</h2>
-      <ul id="newsList" class="list-group">
-        <!-- Noticias se llenarán con JS -->
-      </ul>
+      <ul id="newsList" class="list-group"></ul>
     </div>
 
     <!-- ===================== PIE DE PÁGINA ===================== -->
