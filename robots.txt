@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://youssefeddahmani-design.github.io/sitemap.xml
