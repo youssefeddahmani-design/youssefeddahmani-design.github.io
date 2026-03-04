@@ -1,41 +1,266 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <title>Italia</title>
-    <style>
-      html {
-        color-scheme: light;
-      }
-      body {
-        background-color: #ffffff;
-        color: #000000;
-        font-family: Arial, sans-serif;
-        margin: 0;
-        text-align: center;
-      }
-      header {
-        background: #f4f4f4;
-        padding: 20px;
-      }
-      main {
-        padding: 20px;
-      }
-      a {
-        color: #009933;
-        text-decoration: none;
-        font-weight: bold;
-      }
-    </style>
+    <title>España | Destigo</title>
+    <meta
+      name="description"
+      content="Guía completa para viajar a Italia: qué ver, mejor época, comida típica y consejos útiles."
+    />
+
+    <!-- Bootstrap -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- CSS GLOBAL -->
+    <link rel="stylesheet" href="../css/styles.css" />
   </head>
   <body>
-    <header>
-      <h1>Italia 🇮🇹</h1>
-    </header>
-    <main>
-      <p>Benvenuto nella pagina dell'Italia.</p>
-      <p><a href="espana.html">Ir a España</a></p>
-      <p><a href="francia.html">Ir a Francia</a></p>
-    </main>
+    <!-- ===================== NAVBAR ===================== -->
+    <nav class="navbar navbar-expand-lg">
+      <div class="container">
+        <a class="navbar-brand" href="../index.html">Destigo</a>
+        <button
+          class="navbar-toggler"
+          data-bs-toggle="collapse"
+          data-bs-target="#menu"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div id="menu" class="collapse navbar-collapse">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="../index.html">Inicio</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../dashboard.html">Dashboard</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- ===================== HERO ===================== -->
+    <div class="hero">
+      <h1>Viajar a Italia</h1>
+      <p>Guía completa con información práctica y lugares imprescindibles</p>
+      <a href="#info-espana" class="btn btn-primary mt-3">Descubre Italia</a>
+    </div>
+
+    <div class="container mt-5">
+      <!-- =====================
+         INFORMACIÓN DE ESPAÑA
+    ===================== -->
+      <div class="section-card" id="info-espana">
+        <h3 class="section-title">Información de Italia</h3>
+        <div class="row g-4 text-center">
+          <div class="col-md-4">
+            <div class="info-box shadow-sm p-4">
+              <strong>Capital</strong>
+              <p>Roma</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="info-box shadow-sm p-4">
+              <strong>Idioma oficial</strong>
+              <p>Italiano</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="info-box shadow-sm p-4">
+              <strong>Moneda</strong>
+              <p>Euro (€)</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="info-box shadow-sm p-4">
+              <strong>Schengen</strong>
+              <p>Sí</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="info-box shadow-sm p-4">
+              <strong>Seguridad</strong>
+              <p>Alta</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="info-box shadow-sm p-4">
+              <strong>Agua potable</strong>
+              <p>Sí</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- =====================
+         QUÉ VER EN ESPAÑA
+    ===================== -->
+      <div class="section-card mt-5" id="que-ver">
+        <h3 class="section-title">🏛️ Qué ver en Italia</h3>
+        <div class="row g-4">
+          <div class="col-md-4">
+            <div class="card">
+              <img
+                src="imagenes/coliseom.jpg"
+                class="card-img-top"
+                alt="Coliseom"
+              />
+              <div class="card-body">
+                <h5 class="card-title">Coliseom</h5>
+                <p class="card-text">
+                  Tenía un sistema subterráneo llamado hipogeo, donde se
+                  guardaban animales y gladiadores antes de salir a la arena.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card">
+              <img
+                src="imagenes/Gran-Canal-de-Venecia.jpg"
+                class="card-img-top"
+                alt="Venecia"
+              />
+              <div class="card-body">
+                <h5 class="card-title">Venecia</h5>
+                <p class="card-text">
+                  Venecia tiene más de 150 canales y alrededor de 400 puentes
+                  que conectan sus islas.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card">
+              <img
+                src="imagenes/torre_pisa.webp"
+                class="card-img-top"
+                alt="Torre de pisa"
+              />
+              <div class="card-body">
+                <h5 class="card-title">Torre de pisa</h5>
+                <p class="card-text">
+                  Empezó a inclinarse apenas unos años después de comenzar su
+                  construcción, en 1173, por un terreno inestable.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- =====================
+         CIUDADES MÁS TURÍSTICAS
+    ===================== -->
+      <div class="section-card mt-5">
+        <h3 class="section-title">🏙️ Ciudades más turísticas</h3>
+        <div class="row g-4">
+          <div class="col-md-4">
+            <div class="card">
+              <img src="imagenes/roma.jpg" class="card-img-top" alt="Roma" />
+              <div class="card-body">
+                <h5 class="card-title">Roma</h5>
+                <p class="card-text">
+                  Historia antigua, ruinas y vida nocturna.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card">
+              <img
+                src="imagenes/venecia.webp"
+                class="card-img-top"
+                alt="Venecia"
+              />
+              <div class="card-body">
+                <h5 class="card-title">Venecia</h5>
+                <p class="card-text">
+                  Canales, arte y festivales tradicionales
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card">
+              <img
+                src="imagenes/floremcia.jpg"
+                class="card-img-top"
+                alt="Florencia"
+              />
+              <div class="card-body">
+                <h5 class="card-title">Florencia</h5>
+                <p class="card-text">
+                  Arquitectura bien conservada, arte y cultura renacentista.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- =====================
+         COMIDA TÍPICA
+    ===================== -->
+      <div class="section-card mt-5">
+        <h3 class="section-title">🍽️ Comida típica</h3>
+        <div class="row g-4">
+          <div class="col-md-4">
+            <div class="card">
+              <img src="imagenes/pizza.jpg" class="card-img-top" alt="Pizza" />
+              <div class="card-body">
+                <h5 class="card-title">Pizza</h5>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card">
+              <img src="imagenes/pasta.jpeg" class="card-img-top" alt="pasta" />
+              <div class="card-body">
+                <h5 class="card-title">Pasta</h5>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card">
+              <img
+                src="imagenes/tiramisu.jpg"
+                class="card-img-top"
+                alt="Tiramisu"
+              />
+              <div class="card-body">
+                <h5 class="card-title">Tiramisu</h5>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- =====================
+         BOTONES
+    ===================== -->
+      <div class="text-center mt-5 mb-5">
+        <a href="https://www.skyscanner.es/" class="btn btn-primary"
+          >Buscar vuelos</a
+        >
+        <a href="https://www.booking.com" class="btn btn-success"
+          >Ver hoteles</a
+        >
+        <a href="https://www.rentbycar.com " class="btn btn-warning"
+          >Alquilar coche</a
+        >
+      </div>
+    </div>
+
+    <!-- ===================== FOOTER ===================== -->
+    <footer>
+      <p>© 2026 Destigo | Guía de viajes</p>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
   </body>
 </html>
